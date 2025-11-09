@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Management System - ERD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: rgba(255,255,255,0.9);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-links a {
+            padding: 10px 25px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: white;
+            color: #667eea;
+        }
+
+        .diagram-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow-x: auto;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #2196F3;
+        }
+
+        .info-box h3 {
+            color: #1976D2;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .entity {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .entity:hover .entity-box {
+            fill: #f8f9fa;
+            stroke-width: 3;
+        }
+
+        .entity-box {
+            fill: white;
+            stroke: #667eea;
+            stroke-width: 2;
+        }
+
+        .entity-header {
+            fill: #667eea;
+        }
+
+        .entity-title {
+            fill: white;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .attribute {
+            font-size: 12px;
+            fill: #333;
+        }
+
+        .pk {
+            font-weight: bold;
+            fill: #d63031;
+        }
+
+        .fk {
+            fill: #0984e3;
+            font-style: italic;
+        }
+
+        .relationship-line {
+            stroke: #667eea;
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        .cardinality {
+            font-size: 13px;
+            fill: #333;
+            font-weight: bold;
+        }
+
+        .legend {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .legend h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 15px;
+        }
+
+        .legend-symbol {
+            font-weight: bold;
+            width: 120px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Insurance Management System</h1>
+        <p class="subtitle">Entity Relationship Diagram (ERD)</p>
+        
+        <div class="nav-links">
+            <a href="#" class="active">ERD</a>
+            <a href="eerd.html">EERD</a>
+            <a href="rdm.html">RDM</a>
+        </div>
+
+        <div class="diagram-container">
+            <div class="info-box">
+                <h3>ERD - Entity Relationship Diagram</h3>
+                <p>Shows entities, their attributes, and relationships using crow's foot notation. Each relationship displays cardinality: one (●) to many (crow's foot ⟨).</p>
+            </div>
+
+            <svg viewBox="0 0 1300 800" xmlns="http://www.w3.org/2000/svg">
+                <!-- Customer Entity -->
+                <g class="entity">
+                    <rect class="entity-box" x="50" y="100" width="220" height="220" rx="5"/>
+                    <rect class="entity-header" x="50" y="100" width="220" height="35" rx="5"/>
+                    <text class="entity-title" x="160" y="125" text-anchor="middle">Customer</text>
+                    
+                    <text class="attribute pk" x="60" y="155">CustomerID (PK)</text>
+                    <text class="attribute" x="60" y="175">FirstName</text>
+                    <text class="attribute" x="60" y="195">MiddleName</text>
+                    <text class="attribute" x="60" y="215">LastName</text>
+                    <text class="attribute" x="60" y="235">BirthDate</text>
+                    <text class="attribute" x="60" y="255">Email</text>
+                    <text class="attribute" x="60" y="275">PhoneNumber</text>
+                    <text class="attribute" x="60" y="295">Address</text>
+                </g>
+
+                <!-- Policy Entity -->
+                <g class="entity">
+                    <rect class="entity-box" x="1030" y="100" width="220" height="200" rx="5"/>
+                    <rect class="entity-header" x="1030" y="100" width="220" height="35" rx="5"/>
+                    <text class="entity-title" x="1140" y="125" text-anchor="middle">Policy</text>
+                    
+                    <text class="attribute pk" x="1040" y="155">PolicyID (PK)</text>
+                    <text class="attribute" x="1040" y="175">PolicyName</text>
+                    <text class="attribute" x="1040" y="195">PolicyType</text>
+                    <text class="attribute" x="1040" y="215">CoverageAmount</text>
+                    <text class="attribute" x="1040" y="235">PremiumRate</text>
+                    <text class="attribute" x="1040" y="255">DurationMonths</text>
+                </g>
+
+                <!-- PolicyPurchase Entity (Center) -->
+                <g class="entity">
+                    <rect class="entity-box" x="540" y="180" width="220" height="200" rx="5"/>
+                    <rect class="entity-header" x="540" y="180" width="220" height="35" rx="5"/>
+                    <text class="entity-title" x="650" y="205" text-anchor="middle">PolicyPurchase</text>
+                    
+                    <text class="attribute pk" x="550" y="235">PurchaseID (PK)</text>
+                    <text class="attribute fk" x="550" y="255">CustomerID (FK)</text>
+                    <text class="attribute fk" x="550" y="275">PolicyID (FK)</text>
+                    <text class="attribute" x="550" y="295">PurchaseDate</text>
+                    <text class="attribute" x="550" y="315">StartDate</text>
+                    <text class="attribute" x="550" y="335">EndDate</text>
+                    <text class="attribute" x="550" y="355">Status</text>
+                </g>
+
+                <!-- Payment Entity -->
+                <g class="entity">
+                    <rect class="entity-box" x="350" y="520" width="220" height="240" rx="5"/>
+                    <rect class="entity-header" x="350" y="520" width="220" height="35" rx="5"/>
+                    <text class="entity-title" x="460" y="545" text-anchor="middle">Payment</text>
+                    
+                    <text class="attribute pk" x="360" y="575">PaymentID (PK)</text>
+                    <text class="attribute fk" x="360" y="595">PurchaseID (FK)</text>
+                    <text class="attribute" x="360" y="615">PaymentDate</text>
+                    <text class="attribute" x="360" y="635">Amount</text>
+                    <text class="attribute" x="360" y="655">PaymentMethod</text>
+                    <text class="attribute" x="360" y="675">Status</text>
+                    <text class="attribute" x="360" y="695">PaymentType</text>
+                    <text class="attribute" x="360" y="715">InstallmentYears</text>
+                    <text class="attribute" x="360" y="735">TotalAmount</text>
+                </g>
+
+                <!-- Claim Entity -->
+                <g class="entity">
+                    <rect class="entity-box" x="730" y="520" width="220" height="180" rx="5"/>
+                    <rect class="entity-header" x="730" y="520" width="220" height="35" rx="5"/>
+                    <text class="entity-title" x="840" y="545" text-anchor="middle">Claim</text>
+                    
+                    <text class="attribute pk" x="740" y="575">ClaimID (PK)</text>
+                    <text class="attribute fk" x="740" y="595">PurchaseID (FK)</text>
+                    <text class="attribute" x="740" y="615">ClaimDate</text>
+                    <text class="attribute" x="740" y="635">ClaimAmount</text>
+                    <text class="attribute" x="740" y="655">Description</text>
+                    <text class="attribute" x="740" y="675">Status</text>
+                </g>
+
+                <!-- Relationships with Crow's Foot Notation -->
+                
+                <!-- Customer (1) to PolicyPurchase (M) -->
+                <path class="relationship-line" d="M 270 210 L 540 280"/>
+                <!-- One side (Customer) - circle -->
+                <circle cx="270" cy="210" r="5" fill="white" stroke="#667eea" stroke-width="2.5"/>
+                <!-- Many side (PolicyPurchase) - crow's foot -->
+                <line x1="540" y1="280" x2="525" y2="273" stroke="#667eea" stroke-width="2.5"/>
+                <line x1="540" y1="280" x2="525" y2="287" stroke="#667eea" stroke-width="2.5"/>
+                <line x1="540" y1="280" x2="520" y2="280" stroke="#667eea" stroke-width="2.5"/>
+                <text class="cardinality" x="285" y="205">1</text>
+                <text class="cardinality" x="510" y="275">M</text>
+
+                <!-- Policy (1) to PolicyPurchase (M) -->
+                <path class="relationship-line" d="M 1030 200 L 760 280"/>
+                <!-- One side (Policy) - circle -->
+                <circle cx="1030" cy="200" r="5" fill="white" stroke="#667eea" stroke-width="2.5"/>
+                <!-- Many side (PolicyPurchase) - crow's foot -->
+                <line x1="760" y1="280" x2="775" y2="273" stroke="#667eea" stroke-width="2.5"/>
+                <line x1="760" y1="280" x2="775" y2="287" stroke="#667eea" stroke-width="2.5"/>
+                <line x1="760" y1="280" x2="780" y2="280" stroke="#667eea" stroke-width="2.5"/>
+                <text class="cardinality" x="1005" y="195">1</text>
+                <text class="cardinality" x="785" y="275">M</text>
+
+                <!-- PolicyPurchase (1) to Payment (M) -->
+                <path class="relationship-line" d="M 590 380 L 460 520"/>
+                <!-- One side (PolicyPurchase) - circle -->
+                <circle cx="590" cy="380" r="5" fill="white" stroke="#667eea" stroke-width="2.5"/>
+                <!-- Many side (Payment) - crow's foot -->
+                <line x1="460" y1="520" x2="467" y2="505" stroke="#667eea" stroke-width="2.5"/>
+                <line x1="460" y1="520" x2="453" y2="505" stroke="#667eea" stroke-width="2.5"/>
+                <line x1="460" y1="520" x2="460" y2="500" stroke="#667eea" stroke-width="2.5"/>
+                <text class="cardinality" x="595" y="375">1</text>
+                <text class="cardinality" x="470" y="510">M</text>
+
+                <!-- PolicyPurchase (1) to Claim (M) -->
+                <path class="relationship-line" d="M 710 380 L 840 520"/>
+                <!-- One side (PolicyPurchase) - circle -->
+                <circle cx="710" cy="380" r="5" fill="white" stroke="#667eea" stroke-width="2.5"/>
+                <!-- Many side (Claim) - crow's foot -->
+                <line x1="840" y1="520" x2="833" y2="505" stroke="#667eea" stroke-width="2.5"/>
+                <line x1="840" y1="520" x2="847" y2="505" stroke="#667eea" stroke-width="2.5"/>
+                <line x1="840" y1="520" x2="840" y2="500" stroke="#667eea" stroke-width="2.5"/>
+                <text class="cardinality" x="715" y="375">1</text>
+                <text class="cardinality" x="825" y="510">M</text>
+
+                <!-- Relationship Labels -->
+                <text style="font-size: 12px; fill: #555; font-style: italic;" x="350" y="235">purchases</text>
+                <text style="font-size: 12px; fill: #555; font-style: italic;" x="850" y="235">has</text>
+                <text style="font-size: 12px; fill: #555; font-style: italic;" x="510" y="445">pays for</text>
+                <text style="font-size: 12px; fill: #555; font-style: italic;" x="760" y="445">files</text>
+            </svg>
+
+            <div class="legend">
+                <h3>Crow's Foot Notation Legend</h3>
+                <div class="legend-item">
+                    <span class="legend-symbol">○────</span>
+                    <span>One (exactly one) - mandatory relationship</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-symbol">○────⟨</span>
+                    <span>One-to-Many - crow's foot indicates "many" side</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-symbol">(PK)</span>
+                    <span>Primary Key - uniquely identifies each record</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-symbol">(FK)</span>
+                    <span>Foreign Key - references primary key in another table</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-symbol">1 : M</span>
+                    <span>Cardinality notation (One-to-Many relationship)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add subtle hover effects
+        document.querySelectorAll('.entity').forEach(entity => {
+            entity.addEventListener('mouseenter', function() {
+                this.style.filter = 'drop-shadow(0 4px 8px rgba(102, 126, 234, 0.3))';
+            });
+            
+            entity.addEventListener('mouseleave', function() {
+                this.style.filter = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
